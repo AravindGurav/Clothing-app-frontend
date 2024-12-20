@@ -110,7 +110,7 @@ const HomePage = () => {
                </Link>
              </div>
              {/* //card2 */}
-             <div className="col-md-6">
+             <div className="col-md-6 mb-2">
                <Link style={{ textDecoration: "none" }} to={`/products`}>
                  <div className="card">
                    <div className="row g-0">
@@ -122,7 +122,7 @@ const HomePage = () => {
                        />
                      </div>
 
-                     <div className="col-md-8 ">
+                     <div className="col-md-8 mb-2">
                        <div className="card-body">
                          <h6 className="">NEW ARRIVALS</h6>
                          <h5 className="card-title">Winter Collection</h5>

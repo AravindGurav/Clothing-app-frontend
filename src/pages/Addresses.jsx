@@ -156,6 +156,8 @@ const Addresses = () => {
   return (
     <>
       <Header />
+      {loading && <p className="text-center"> Loading...</p>}
+      {error && <p className="text-center"> Error in loading address.</p>}
       {showToast && (
         <div
           className="mb-3 container toast show"
@@ -206,6 +208,7 @@ const Addresses = () => {
               <input
                 type="text"
                 className="form-control"
+                placeholder="Home or Work"
                 value={addressLocation}
                 onChange={(e) => setAddressLocation(e.target.value)}
                 required
@@ -254,7 +257,7 @@ const Addresses = () => {
             <div className="mb-3">
               <label className="form-label">Postal Code</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 value={postalCode}
                 onChange={(e) => setPostalCode(e.target.value)}
@@ -264,7 +267,7 @@ const Addresses = () => {
             <div className="mb-3">
               <label className="form-label">Phone Number</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}

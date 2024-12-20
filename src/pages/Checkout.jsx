@@ -41,6 +41,8 @@ export default function Checkout() {
   return (
     <>
       <Header />
+      {loading && <p className="text-center"> Loading...</p>}
+      {error && <p className="text-center"> Error in loading products.</p>}
       <div className="container my-4">
         <h3 className="text-center fw-bold mt-2">CHECKOUT</h3>
 

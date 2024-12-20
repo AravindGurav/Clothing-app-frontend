@@ -64,8 +64,8 @@ setTimeout(() => {
   return (
     <>
       <Header />
-      {loading && <p> Loading...</p>}
-      {error && <p> Error in fetching the products.</p>}
+      {loading && <p className="text-center"> Loading...</p>}
+      {error && <p className="text-center"> Error in fetching the products.</p>}
       {/* Toast Message */}
       {showToast && (
         <div
@@ -147,7 +147,7 @@ setTimeout(() => {
               </div>
               {/* Description Section */}
 
-              <div className="mt-4">
+              <div className="mt-4 mb-4">
                 <h4>Description:</h4>
                 <p>{data.description}</p>
               </div>

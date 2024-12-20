@@ -93,8 +93,10 @@ const Wishlist = () => {
      return (
        <>
          <Header />
-         {loading && <p> Loading...</p>}
-         {error && <p> Error in fetching the wishlist items.</p>}
+         {loading && <p className="text-center"> Loading...</p>}
+         {error && (
+           <p className="text-center"> Error in fetching the wishlist items.</p>
+         )}
          {/* Toast Message */}
          {showToast && (
            <div

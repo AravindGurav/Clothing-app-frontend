@@ -187,7 +187,7 @@ const ProductListing = () => {
           </div>
         </div>
       )}
-      {error && <p> Error in fetching the products.</p>}
+      {error && <p className="text-center"> Error in fetching the products.</p>}
       <div className="container-fluid container mt-4">
         <div className="row">
           {/* Filters Section */}

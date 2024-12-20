@@ -143,8 +143,10 @@ const Cart = () => {
   return (
     <>
       <Header />
-      {loading && <p>Loading...</p>}
-      {error && <p>Error in fetching the cart items.</p>}
+      {loading && <p className="text-center">Loading...</p>}
+      {error && (
+        <p className="text-center">Error in fetching the cart items.</p>
+      )}
       {/* Toast Message */}
       {showToast && (
         <div
@@ -209,13 +211,13 @@ const Cart = () => {
                     </div>
                     <div className="mt-3">
                       <button
-                        className="btn btn-secondary me-2"
+                        className="btn btn-secondary me-2 mb-2"
                         onClick={() => handleRemoveFromCart(item._id)}
                       >
                         Remove From Cart
                       </button>
                       <button
-                        className="btn btn-outline-secondary"
+                        className="btn btn-outline-secondary mb-2"
                         onClick={() => handleMoveToWishlist(item)}
                       >
                         Move to Wishlist
