@@ -14,7 +14,7 @@ const Cart = () => {
 
   useEffect(() => {
     if (data) {
-      setCartData(data)
+      setCartData(Array.isArray(data) ? data : [])
     }
   }, [data])
 
@@ -116,7 +116,10 @@ const Cart = () => {
   }
 
   // Calculate total quantity of items in the cart
-  const totalQuantity = cartData.reduce((acc, item) => acc + Number(item.quantity), 0)
+  const totalQuantity = cartData.reduce(
+    (acc, item) => acc + Number(item.quantity),
+    0
+  )
 
   //price calculation
 
@@ -166,6 +169,19 @@ const Cart = () => {
               onClick={() => setShowToast(false)}
             ></button>
           </div>
+        </div>
+      )}
+
+      {!loading && !error && cartData.length === 0 && (
+        <div className="container text-center my-5">
+          <i className="bi bi-cart-x display-1 text-muted"></i>
+          <h2 className="mt-3">Your cart is empty</h2>
+          <p className="text-muted">
+            Looks like you haven't added anything yet
+          </p>
+          <Link to="/products" className="btn btn-primary">
+            Continue Shopping
+          </Link>
         </div>
       )}
       {cartData && cartData.length > 0 && (

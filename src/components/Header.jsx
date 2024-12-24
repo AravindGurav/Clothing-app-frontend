@@ -13,10 +13,7 @@ export default function Header({ searchFunction }) {
          <nav className="navbar navbar-expand-lg navbar-light bg-light">
            <div className="container">
              <Link className="navbar-brand" to="/">
-               Elegant Store
-             </Link>
-             <Link className="btn btn-outline-secondary me-4" to="/products">
-               Products
+               Shoppie App
              </Link>
 
              <div className="d-flex">
@@ -29,7 +26,9 @@ export default function Header({ searchFunction }) {
                />
              </div>
              <div className="d-flex align-items-center">
-               <Link to="/address" className="btn btn-sm btn-outline-secondary me-4">Saved Address</Link>
+               <Link to="/profile" className=" text-dark fs-5 ms-4">
+                 <i className="bi bi-person-circle"></i>
+               </Link>
                <Link
                  to="/wishlist"
                  className="text-dark text-decoration-none ms-4"

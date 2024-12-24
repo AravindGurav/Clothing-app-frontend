@@ -24,40 +24,39 @@ const ProductListing = () => {
 
   useEffect(() => {
     setFilteredData(data || []) // Initialize with fetched data or empty array
-  }, [data])
+    if (tag) {
+      setSelectedCategory([tag]) // Set the category from URL parameter
+    }
+  }, [data, tag])
 
   //triggering the function everytime filteredData is changed
   useEffect(() => {
-    if (!data) return
-    let sameData = [...data]
+    // if (!data) return
+    if (data) {
+      let filtered = [...data]
 
+      //filter by category
+      if (selectedCategory.length > 0) {
+        filtered = filtered.filter((item) =>
+          selectedCategory.includes(item.category)
+        )
+        // console.log(filtered)
+      }
 
-    //filter by params or tag
-    if (tag) {
-      sameData = sameData.filter(item => item.category === tag)
+      //filter by rating
+      if (rating) {
+        filtered = filtered.filter((item) => item.rating >= parseFloat(rating))
+      }
+
+      //sort by price
+      if (sortOrder === "lowToHigh") {
+        filtered.sort((a, b) => a.currentPrice - b.currentPrice)
+      } else if (sortOrder === "highToLow") {
+        filtered.sort((a, b) => b.currentPrice - a.currentPrice)
+      }
+      // console.log(filtered)
+      setFilteredData(filtered)
     }
-
-    //filter by category
-    if (selectedCategory.length > 0) {
-      sameData = sameData.filter((item) =>
-        selectedCategory.includes(item.category)
-      )
-      // console.log(sameData)
-    }
-
-    //filter by rating
-    if (rating) {
-      sameData = sameData.filter((item) => item.rating >= parseFloat(rating))
-    }
-
-    //sort by price
-    if (sortOrder === "lowToHigh") {
-      sameData.sort((a, b) => a.currentPrice - b.currentPrice)
-    } else if (sortOrder === "highToLow") {
-      sameData.sort((a, b) => b.currentPrice - a.currentPrice)
-    }
-    console.log(sameData)
-    setFilteredData(sameData)
   }, [sortOrder, rating, selectedCategory, data])
 
   //function for matching the passed search text with the data recieved from api
@@ -114,20 +113,18 @@ const ProductListing = () => {
       const result = response.json()
       console.log("Item added to wishlist", result)
 
-       setToastMessage("Item successfully added to wishlist")
-       setShowToast(true)
-       setTimeout(() => {
-         setShowToast(false)
-         setToastMessage("")
-       }, 1500)
+      setToastMessage("Item successfully added to wishlist")
+      setShowToast(true)
+      setTimeout(() => {
+        setShowToast(false)
+        setToastMessage("")
+      }, 1500)
       // alert("Item successfully added to wishlist")
-
     } catch (error) {
       console.log("Error adding to wishlist", error)
-        alert("Failed to add item to wishlist")
+      alert("Failed to add item to wishlist")
     }
-  } 
-
+  }
 
   const handleAddToCart = async (item) => {
     try {
@@ -151,7 +148,6 @@ const ProductListing = () => {
           setShowToast(false)
           setToastMessage("")
         }, 1500)
-
       } else {
         console.error("Failed to move the item to cart")
         alert("Failed to move the item to cart")
@@ -256,32 +252,6 @@ const ProductListing = () => {
                 </label>
               </div>
             </div>
-
-            {/* <div className="mt-4">
-              <h6>Rating</h6>
-              {[
-                "4 Stars & above",
-                "3 Stars & above",
-                "2 Stars & above",
-                "1 Star & above",
-              ].map((rating, index) => (
-                <div className="form-check" key={index}>
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="rating"
-                    value={`rating.replace(/\D/g, '')`}
-                    id={`rating${index}`}
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor={`rating${index}`}
-                  >
-                    {rating}
-                  </label>
-                </div>
-              ))}
-            </div> */}
 
             <div className="mt-4">
               <h6>Rating</h6>
