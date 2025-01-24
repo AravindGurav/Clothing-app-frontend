@@ -58,13 +58,16 @@ export default function Checkout() {
       }
 
       // Send POST request to create order
-      const orderResponse = await fetch("http://localhost:4000/api/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      })
+      const orderResponse = await fetch(
+        "https://clothing-app-backend-sepia.vercel.app/api/orders",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(orderData),
+        }
+      )
 
       if (orderResponse.ok) {
         // Send DELETE request to clear the cart
