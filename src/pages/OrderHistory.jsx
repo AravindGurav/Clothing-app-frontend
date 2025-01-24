@@ -50,7 +50,9 @@ export default function OrderHistory() {
                 <div>
                   <h5 className="mt-3">Shipping Address:</h5>
                   <p className="mb-2">
-                    {order.addressLocation}, {order.street}, {order.city},{" "}
+                    {" "}
+                    <strong>{order.user} - </strong>
+                    {order.addressLocation} | {order.street}, {order.city},{" "}
                     {order.state}, {order.country}
                   </p>
                   <p>
