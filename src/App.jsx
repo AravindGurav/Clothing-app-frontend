@@ -7,6 +7,7 @@ import Cart from "./pages/Cart"
 import Addresses from "./pages/Addresses"
 import Checkout from "./pages/Checkout"
 import Profile from "./pages/Profile"
+import OrderHistory from "./pages/OrderHistory"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/products/:param" element={<ProductListing />} />
         <Route path="/productDetails/:productId" element={<ProductDetails />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/orderHistory" element={<OrderHistory />} />
       </Routes>
     </Router>
   )

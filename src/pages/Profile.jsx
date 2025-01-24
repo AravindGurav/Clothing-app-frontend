@@ -117,10 +117,18 @@ const Profile = () => {
         </div>
         <Link
           to="/address"
-          className="btn btn-primary d-flex align-items-center justify-content-center gap-2 mt-2"
+          className="btn btn-primary btn-md rounded-pill d-flex align-items-center justify-content-center gap-2 mt-3 shadow"
         >
           <i className="bi bi-geo-alt"></i>
           Manage Saved Addresses
+        </Link>
+
+        <Link
+          to="/OrderHistory"
+          className="btn btn-secondary btn-md rounded-pill d-flex align-items-center justify-content-center gap-2 mt-3 shadow"
+        >
+          <i className="bi bi-clock-history"></i>
+          Order History
         </Link>
       </div>
     </>

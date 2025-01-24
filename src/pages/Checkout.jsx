@@ -33,23 +33,78 @@ export default function Checkout() {
 
   const placeOrderHandler = async () => {
     try {
-      // Send DELETE request to clear the cart
-      const response = await fetch(
-        "https://clothing-app-backend-sepia.vercel.app/api/cart/products",
-        {
-          method: "DELETE",
-        }
+      // Get cart items data
+      const cartResponse = await fetch(
+        "https://clothing-app-backend-sepia.vercel.app/api/cart/products"
       )
+      const cartItems = await cartResponse.json()
 
-      if (response.ok) {
-        console.log("Cart cleared successfully!", selectedAddress)
-        setOrderPlaced(true)
+      // Prepare order data
+      const orderData = {
+        items: cartItems.map((item) => ({
+          name: item.name,
+          quantity: item.quantity,
+          price: item.currentPrice,
+        })),
+        totalAmount: priceDetails.totalAmount,
+        user: selectedAddress.name,
+        addressLocation: selectedAddress.addressLocation,
+        street: selectedAddress.street,
+        city: selectedAddress.city,
+        state: selectedAddress.state,
+        country: selectedAddress.country,
+        postalCode: selectedAddress.postalCode,
+        phoneNumber: selectedAddress.phoneNumber || "NA",
+      }
+
+      // Send POST request to create order
+      const orderResponse = await fetch("http://localhost:4000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      })
+
+      if (orderResponse.ok) {
+        // Send DELETE request to clear the cart
+        const deleteCartResponse = await fetch(
+          "https://clothing-app-backend-sepia.vercel.app/api/cart/products",
+          {
+            method: "DELETE",
+          }
+        )
+
+        if (deleteCartResponse.ok) {
+          console.log("Order placed and cart cleared successfully!")
+          setOrderPlaced(true)
+        } else {
+          console.error("Failed to clear the cart")
+        }
       } else {
-        console.error("Failed to clear the cart")
+        console.error("Failed to place order")
       }
     } catch (error) {
-      console.log("error in deleting ", error)
+      console.error("Error placing order:", error)
     }
+    // try {
+    //   // Send DELETE request to clear the cart
+    //   const response = await fetch(
+    //     "https://clothing-app-backend-sepia.vercel.app/api/cart/products",
+    //     {
+    //       method: "DELETE",
+    //     }
+    //   )
+
+    //   if (response.ok) {
+    //     console.log("Cart cleared successfully!", selectedAddress)
+    //     setOrderPlaced(true)
+    //   } else {
+    //     console.error("Failed to clear the cart")
+    //   }
+    // } catch (error) {
+    //   console.log("error in deleting ", error)
+    // }
   }
 
   return (
