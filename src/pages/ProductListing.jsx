@@ -1,4 +1,5 @@
 import Header from "../components/Header"
+import Footer from "../components/Footer"
 import { useState, useEffect } from "react"
 import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
@@ -18,9 +19,8 @@ const ProductListing = () => {
   const [selectedCategory, setSelectedCategory] = useState([])
   const [rating, setRating] = useState(null)
 
-
   const [toastMessage, setToastMessage] = useState("")
-      const [showToast, setShowToast] = useState(false)
+  const [showToast, setShowToast] = useState(false)
 
   useEffect(() => {
     setFilteredData(data || []) // Initialize with fetched data or empty array
@@ -399,6 +399,7 @@ const ProductListing = () => {
         {/*  row */}
       </div>
       {/*  outer div */}
+      <Footer />
     </>
   )
 }

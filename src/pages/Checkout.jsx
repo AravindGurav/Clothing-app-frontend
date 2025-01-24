@@ -1,7 +1,8 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer"
 import { useState, useEffect } from "react"
-import useFetch from "../useFetch";
-import { useLocation } from "react-router-dom";
+import useFetch from "../useFetch"
+import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
 
 export default function Checkout() {
@@ -210,6 +211,7 @@ export default function Checkout() {
           </div>
         </div>
       )}
+      <Footer />
     </>
   )
 }

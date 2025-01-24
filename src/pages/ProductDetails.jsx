@@ -1,7 +1,8 @@
 import Header from "../components/Header";
-import useFetch from "../useFetch";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import Footer from "../components/Footer"
+import useFetch from "../useFetch"
+import { useParams } from "react-router-dom"
+import { useState } from "react"
 
 export default function ProductDetails() {
   const pid = useParams().productId
@@ -11,12 +12,11 @@ export default function ProductDetails() {
   //  console.log(pid)
   //  console.log(data)
 
-  const [quantity, setQuantity] = useState(1) 
-  const [selectedSize, setSelectedSize] = useState("") 
+  const [quantity, setQuantity] = useState(1)
+  const [selectedSize, setSelectedSize] = useState("")
 
   const [toastMessage, setToastMessage] = useState("")
-      const [showToast, setShowToast] = useState(false)
-
+  const [showToast, setShowToast] = useState(false)
 
   const handleAddToCart = async () => {
     if (!selectedSize) {
@@ -27,8 +27,8 @@ export default function ProductDetails() {
     // Include the entire product data + quantity and selected size
     const cartItem = {
       ...data,
-      size: selectedSize, 
-      quantity, 
+      size: selectedSize,
+      quantity,
     }
 
     try {
@@ -45,13 +45,12 @@ export default function ProductDetails() {
 
       if (response.ok) {
         // alert("Item added to cart successfully!")
-setToastMessage("Item added to cart successfully!")
-setShowToast(true)
-setTimeout(() => {
-  setShowToast(false)
-  setToastMessage("")
-}, 1500)
-
+        setToastMessage("Item added to cart successfully!")
+        setShowToast(true)
+        setTimeout(() => {
+          setShowToast(false)
+          setToastMessage("")
+        }, 1500)
       } else {
         alert("Failed to add item to cart.")
       }
@@ -88,7 +87,7 @@ setTimeout(() => {
         </div>
       )}
       {data && Object.keys(data).length > 0 && (
-        <div className="container mt-4">
+        <div className="container mt-4 py-4 mb-4">
           {/* Product Details Section */}
           <div className="row">
             <div className="col-md-5">
@@ -155,6 +154,7 @@ setTimeout(() => {
           </div>
         </div>
       )}
+      <Footer />
     </>
   )
 }

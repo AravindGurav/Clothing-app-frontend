@@ -1,7 +1,7 @@
 import Header from "../components/Header";
-
-import React, { useState, useEffect } from "react";
-import useFetch from "../useFetch";
+import Footer from "../components/Footer"
+import React, { useState, useEffect } from "react"
+import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
 
 const Wishlist = () => {
@@ -170,6 +170,7 @@ const Wishlist = () => {
           </div>
         </div>
       )}
+      <Footer />
     </>
   )
 }

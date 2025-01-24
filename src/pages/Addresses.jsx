@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import Header from "../components/Header"
+import Footer from "../components/Footer"
 import useFetch from "../useFetch"
 import { useEffect, useState } from "react"
 
@@ -20,13 +21,10 @@ const Addresses = () => {
   const [postalCode, setPostalCode] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
 
-  
   const [editAddress, setEditAddress] = useState(null)
 
-  
-    const [toastMessage, setToastMessage] = useState("")
-      const [showToast, setShowToast] = useState(false)
-
+  const [toastMessage, setToastMessage] = useState("")
+  const [showToast, setShowToast] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -43,7 +41,6 @@ const Addresses = () => {
 
     try {
       if (editAddress) {
-      
         const response = await fetch(
           `https://clothing-app-backend-sepia.vercel.app/api/address/${editAddress._id}`,
           {
@@ -56,20 +53,20 @@ const Addresses = () => {
         )
 
         if (response.ok) {
-             const updatedAddress = await response.json()
-             setAddressData((prevData) =>
-               prevData.map((address) =>
-                 address._id === updatedAddress._id ? updatedAddress : address
-               )
-             )
-             console.log("Updated Adrress:",updatedAddress)
-          setEditAddress(null) 
-           setToastMessage("Address updated successfully.")
-           setShowToast(true)
-           setTimeout(() => {
-             setShowToast(false)
-             setToastMessage("")
-           }, 1500)
+          const updatedAddress = await response.json()
+          setAddressData((prevData) =>
+            prevData.map((address) =>
+              address._id === updatedAddress._id ? updatedAddress : address
+            )
+          )
+          console.log("Updated Adrress:", updatedAddress)
+          setEditAddress(null)
+          setToastMessage("Address updated successfully.")
+          setShowToast(true)
+          setTimeout(() => {
+            setShowToast(false)
+            setToastMessage("")
+          }, 1500)
         } else {
           console.error("Error editing address")
         }
@@ -87,16 +84,16 @@ const Addresses = () => {
 
         if (response.ok) {
           const newAddress = await response.json()
-             setAddressData((prevData) => [...prevData, newAddress])
-             console.log(addressData)
+          setAddressData((prevData) => [...prevData, newAddress])
+          console.log(addressData)
           setAddAddress(false) // Close the form
 
-           setToastMessage("Address added successfully.")
-           setShowToast(true)
-           setTimeout(() => {
-             setShowToast(false)
-             setToastMessage("")
-           }, 1500)
+          setToastMessage("Address added successfully.")
+          setShowToast(true)
+          setTimeout(() => {
+            setShowToast(false)
+            setToastMessage("")
+          }, 1500)
         } else {
           console.error("Error adding address")
         }
@@ -120,12 +117,12 @@ const Addresses = () => {
           prevData.filter((address) => address._id !== id)
         )
         console.log("Address deleted:", id)
-         setToastMessage("Address deleted successfully.")
-         setShowToast(true)
-         setTimeout(() => {
-           setShowToast(false)
-           setToastMessage("")
-         }, 1500)
+        setToastMessage("Address deleted successfully.")
+        setShowToast(true)
+        setTimeout(() => {
+          setShowToast(false)
+          setToastMessage("")
+        }, 1500)
       } else {
         console.error("Error deleting address:", response.statusText)
       }
@@ -319,6 +316,7 @@ const Addresses = () => {
             ))}
         </ul>
       </div>
+      <Footer />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Header from "../components/Header"
+import Footer from "../components/Footer"
 import useFetch from "../useFetch"
 import { Link } from "react-router-dom"
 
@@ -281,6 +282,7 @@ const Cart = () => {
           </div>
         </div>
       )}
+      <Footer />
     </>
   )
 }

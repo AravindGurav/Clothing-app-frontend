@@ -1,4 +1,5 @@
 import Header from "../components/Header"
+import Footer from "../components/Footer"
 import useFetch from "../useFetch"
 import { useState, useEffect } from "react"
 
@@ -67,6 +68,7 @@ export default function OrderHistory() {
           ))}
         </div>
       )}
+      <Footer />
     </>
   )
 }
