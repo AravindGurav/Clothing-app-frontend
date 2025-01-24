@@ -1,6 +1,0 @@
-.product-image {
-  width: 100%; /* Ensures the image takes the full width of the container */
-  height: 400px; /* Set a fixed height for all product images */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
-  border-radius: 5px; /* Optional: Adds rounded corners */
-}
