@@ -8,6 +8,7 @@ import Addresses from "./pages/Addresses"
 import Checkout from "./pages/Checkout"
 import Profile from "./pages/Profile"
 import OrderHistory from "./pages/OrderHistory"
+import "./App.css"
 
 function App() {
   return (

@@ -258,6 +258,7 @@ const ProductListing = () => {
               <div className="form-check">
                 <input
                   type="radio"
+                  className="form-check-input"
                   id="rating4"
                   name="rating"
                   value="4"
@@ -269,6 +270,7 @@ const ProductListing = () => {
               <div className="form-check">
                 <input
                   type="radio"
+                  className="form-check-input"
                   id="rating3"
                   name="rating"
                   value="3"
@@ -280,6 +282,7 @@ const ProductListing = () => {
               <div className="form-check">
                 <input
                   type="radio"
+                  className="form-check-input"
                   id="rating2"
                   name="rating"
                   value="2"
@@ -291,6 +294,7 @@ const ProductListing = () => {
               <div className="form-check">
                 <input
                   type="radio"
+                  className="form-check-input"
                   id="rating1"
                   name="rating"
                   value="1"
@@ -350,7 +354,7 @@ const ProductListing = () => {
                     <div className="card h-100">
                       <img
                         src={item.imageUrl}
-                        className="card-img-top"
+                        className="card-img-top product-image"
                         alt="Product"
                       />
                       <div className="card-body text-center">

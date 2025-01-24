@@ -13,7 +13,7 @@ export default function Header({ searchFunction }) {
          <nav className="navbar navbar-expand-lg navbar-light bg-light">
            <div className="container">
              <Link className="navbar-brand" to="/">
-               Shoppie App
+               Shopify
              </Link>
 
              <div className="d-flex">
